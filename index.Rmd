@@ -1,0 +1,59 @@
+---
+title       : Classification of iris flowers
+subtitle    : Final project for the course Developing Data Products
+author      : Carlos F. Alcala
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Introduction
+
+*	Algorithm is implemented to classify iris flowers based on size features. 
+*	Visual implementation to facilitate its understanding to the user. 
+*	Classification is performed with k-nearest neighbors and principal component analysis
+*	Training set is from the Iris set.
+
+--- .class #id1 
+
+## Data
+
+* The Iris flowers dataset is used to train the algorithm. 
+* 4 numerical features: Sepal Length, Sepal Width, Petal Length, and Petal Width.
+* 1 categorical variable: Species. 
+* Species is the predicted variable.
+
+```{r message = F, comment = NA}
+str(iris)
+```
+
+--- .class #id2
+
+## Algorithm
+
+* The data is transformed with <a href="http://en.wikipedia.org/wiki/Principal_component_analysis">principal component analysis</a> (PCA)
+* Only keep the first two principal components.
+* Take new measurements of Sepal.Width, Sepal.Length, Petal.Width and Petal.Length 
+* Project them to the principal component (PC) space. 
+* We obtain two measurements with this projection: the first and second principal components for the measurements, PC1 and PC2. 
+* Plot PC1 and PC2. 
+* Calculate how close they are to the center of the each clusters 
+* Calculate the distance with the <a href='http://en.wikipedia.org/wiki/Mahalanobis_distance'>Mahalanobis distance.</a>
+* A point is classified as the flower with the nearest center with the point.
+
+--- .class #id3
+
+
+## Application
+
+* Change value of variable with the slider to move the new point.
+* New point is projected onto the PC space of the flower data.
+* Distance to the cluster centers is calculated.
+* Color and name of the point change to color and name of the nearest flower cluster center.
+
+<center><img src="iris_presentation.png" alt="Application Screenshot" height="350"></center>
+
+
